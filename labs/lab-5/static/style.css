@@ -1,14 +1,41 @@
 body {
-    background-color: lightblue;
-  }
-  
-  h1 {
-    color: blueviolet;
-    text-align: center;
-  }
-  
-  p {
-    font-family: verdana;
-    font-size: 20px;
-    text-align: center;
-  }
+  background-image: url("/static/yr7n0u3qzO9nG.webp");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.navbar {
+  background-color: #4a90e2;
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  border-radius: 5px;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  margin: 5px 0;
+  padding: 5px 10px;
+  background-color: #357abd;
+  border-radius: 3px;
+}
+
+.navbar a:hover {
+  background-color: #2c5aa0;
+}
+
+h1 {
+  color: blueviolet;
+  text-align: center;
+}
+
+p {
+  font-family: verdana;
+  font-size: 20px;
+  text-align: center;
+}

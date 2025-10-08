@@ -34,13 +34,29 @@ def create_app():
     # routes
     # ===============================================================
 
-    # create a webpage based off of the html in templates/index.html
+    # captcha page
     @app.route('/')
+    def captcha():
+        """Captcha page"""
+        return render_template('captcha.html')
+    
+    # main page after captcha completion
+    @app.route('/index')
     def index():
         """Home page"""
         return render_template('index.html')
-    
-    # add more routes here!
+
+    # cats page
+    @app.route('/cats')
+    def cats():
+        """Cats page"""
+        return render_template('cats.html')
+
+    # warning page
+    @app.route('/warning')
+    def warning():
+        """Warning page"""
+        return render_template('warning.html')
 
     return app
 
