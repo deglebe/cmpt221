@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+    <title>website</title>
+    <link rel="stylesheet" href="/static/cats.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="/index">Home</a>
+      <a href="/warning">Warning</a>
+    </nav>
+    <h1>Cat?s Gallery</h1>
+    <p>
+      cat error messages (refresh until you get a non-404 one, website developer
+      too lazy to ensure actual code image is returned)
+    </p>
+    <div class="cat-container">
+      <img id="random-cat" alt="Random HTTP Cat" />
+    </div>
+    <script>
+      const randomCode = Math.floor(Math.random() * (530 - 100 + 1)) + 100;
+      document.getElementById("random-cat").src =
+        `https://http.cat/images/${randomCode}.jpg`;
+    </script>
+  </body>
+</html>
