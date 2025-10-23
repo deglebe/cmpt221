@@ -2,8 +2,8 @@
 
 import os
 from dotenv import load_dotenv
-from flask import Flask, render_template
-from db.query import get_all
+from flask import Flask, render_template, request, redirect, url_for
+from db.query import get_all, get_session, get_user_by_email
 from db.server import init_database
 from db.schema import Users
 
@@ -32,6 +32,8 @@ def create_app():
             print("Failed to initialize database. Exiting.")
             exit(1)
 
+    session = get_session()
+
     # ===============================================================
     # routes
     # ===============================================================
@@ -42,17 +44,49 @@ def create_app():
         """Home page"""
         return render_template('index.html')
     
-    @app.route('/signup')
+    @app.route('/signup', methods=['GET','POST'])
     def signup():
         """Sign up page: enables users to sign up"""
-        #TODO: implement sign up logic here
+        if request.method == 'POST':
+            try:
+                fname = request.form["firstname"]
+                lname = request.form["lastname"]
+                email = request.form["email"]
+                phnum = request.form["phone"]
+                pword = request.form["password"]
 
+                user = Users(
+                        FirstName=fname,
+                        LastName=lname,
+                        Email=email,
+                        PhoneNumber=phnum,
+                        Password=pword
+                        )
+
+                session.add(user)
+                session.commit()
+
+                return redirect(url_for("success"))
+            except Exception as e:
+                session.rollback()
+                print("error inserting user record:", e)
+            finally:
+                session.close()
         return render_template('signup.html')
     
-    @app.route('/login')
+    @app.route('/login', methods=['GET','POST'])
     def login():
         """Log in page: enables users to log in"""
-        # TODO: implement login logic here
+        if request.method == 'POST':
+            email = request.form["email"]
+            password = request.form["password"]
+
+            user = get_user_by_email(email)
+
+            if user and user.Password == password:
+                return redirect(url_for("success"))
+            else:
+                return redirect(url_for("login"))
 
         return render_template('login.html')
 

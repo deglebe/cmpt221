@@ -1,19 +1,26 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-    <head>
-        <title>Lab 6 Log In</title>
-        <link rel="stylesheet" href="/static/style.css">
-    </head>
-    <body>
-        <h1>Log In</h1>
-        <div>
-        <!-- Create a log in form here -->
+  <head>
+    <title>Lab 6 Log In</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <h1>Log In</h1>
+    <div>
+      <form method="post">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
 
-        </div>
-        
-        <br>
-        <a href="/">
-            <button type="button" id="home">Home</button>
-        </a>
-    </body>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
+
+        <button type="submit">Login</button>
+      </form>
+    </div>
+
+    <br />
+    <a href="/">
+      <button type="button" id="home">Home</button>
+    </a>
+  </body>
 </html>

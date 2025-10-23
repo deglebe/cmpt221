@@ -1,18 +1,41 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-    <head>
-        <title>Lab 6 Sign Up</title>
-        <link rel="stylesheet" href="/static/style.css">
-    </head>
-    <body>
-        <h1>Sign Up</h1>
-        <div>
-            <!-- Create a sign up form here -->
-        </div>
+  <head>
+    <title>Lab 6 Sign Up</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <h1>Sign Up</h1>
+    <div>
+      <form method="post">
+        <label for="firstname">First Name:</label>
+        <input
+          type="text"
+          id="firstname"
+          name="firstname"
+          value="First Name"
+          required
+        />
 
-        <br>
-        <a href="/">
-            <button type="button" id="home">Home</button>
-        </a>
-    </body>
+        <label for="lastname">Last Name:</label>
+        <input type="text" id="lastname" name="lastname" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required />
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
+
+        <button type="submit">Register</button>
+      </form>
+    </div>
+
+    <br />
+    <a href="/">
+      <button type="button" id="home">Home</button>
+    </a>
+  </body>
 </html>
