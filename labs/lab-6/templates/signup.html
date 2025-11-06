@@ -6,16 +6,19 @@
   </head>
   <body>
     <h1>Sign Up</h1>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <p class="flash-error">{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
     <div>
       <form method="post">
         <label for="firstname">First Name:</label>
-        <input
-          type="text"
-          id="firstname"
-          name="firstname"
-          value="First Name"
-          required
-        />
+        <input type="text" id="firstname" name="firstname" required />
 
         <label for="lastname">Last Name:</label>
         <input type="text" id="lastname" name="lastname" required />
@@ -24,7 +27,14 @@
         <input type="email" id="email" name="email" required />
 
         <label for="phone">Phone Number:</label>
-        <input type="tel" id="phone" name="phone" required />
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          pattern="[0-9]{10}"
+          title="Phone number must be exactly 10 digits (0-9 only)"
+          required
+        />
 
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required />
