@@ -1,18 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-    <head>
-        <title>Lab 6 Sign Up</title>
-        <link rel="stylesheet" href="/static/style.css">
-    </head>
-    <body>
-        <h1>Sign Up</h1>
-        <div>
-            <!-- Create a sign up form here -->
-        </div>
+  <head>
+    <title>Lab 6 Sign Up</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <h1>Sign Up</h1>
 
-        <br>
-        <a href="/">
-            <button type="button" id="home">Home</button>
-        </a>
-    </body>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <p class="flash-error">{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <div>
+      <form method="post">
+        <label for="firstname">First Name:</label>
+        <input type="text" id="firstname" name="firstname" required />
+
+        <label for="lastname">Last Name:</label>
+        <input type="text" id="lastname" name="lastname" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="phone">Phone Number:</label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          pattern="[0-9]{10}"
+          title="Phone number must be exactly 10 digits (0-9 only)"
+          required
+        />
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
+
+        <button type="submit">Register</button>
+      </form>
+    </div>
+
+    <br />
+    <a href="/">
+      <button type="button" id="home">Home</button>
+    </a>
+  </body>
 </html>
