@@ -25,4 +25,4 @@ EXPOSE 5000
 ENV FLASK_APP=lab-10-app/app.py
 
 # Run the application
-CMD ["python", "app.py"]
+CMD ["python3", "app.py"]
