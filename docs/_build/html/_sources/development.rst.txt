@@ -4,6 +4,39 @@ Development
 ===========
 This section is intended for developers that want to create a fix or develop an enhancement to the <application-name> application.
 
+Getting Started
+---------------
+To get started with this lab repository, follow these steps:
+
+1. **Set up a Python virtual environment**: A `Python virtual environment`_ is recommended to isolate project dependencies.
+
+   .. _Python virtual environment: https://virtualenv.pypa.io/en/latest/
+
+   .. code-block:: text
+
+       $ python3 -m venv venv
+       $ source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+2. **Install dependencies**: From the repository root, install all required packages:
+
+   .. code-block:: text
+
+       $ pip install -r requirements.txt
+
+3. **Navigate to a lab**: Each lab is located in its own directory under ``labs/``. Change into the lab directory you want to work with:
+
+   .. code-block:: text
+
+       $ cd labs/lab-<number>
+
+4. **Run the application**: Most labs contain a Flask application. To run a specific lab's application:
+
+   .. code-block:: text
+
+       $ python app.py
+
+   Some labs may have additional setup requirements (such as Docker for lab-10) or specific instructions documented in their respective directories.
+
 Code of Conduct
 ---------------
 <insert code of conduct here>

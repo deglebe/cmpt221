@@ -46,6 +46,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#code-of-conduct">Code of Conduct</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#repository">Repository</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#development-environment">Development Environment</a></li>
@@ -84,6 +85,34 @@
   <section id="development">
 <span id="id1"></span><h1>Development<a class="headerlink" href="#development" title="Link to this heading"></a></h1>
 <p>This section is intended for developers that want to create a fix or develop an enhancement to the &lt;application-name&gt; application.</p>
+<section id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h2>
+<p>To get started with this lab repository, follow these steps:</p>
+<ol class="arabic">
+<li><p><strong>Set up a Python virtual environment</strong>: A <a class="reference external" href="https://virtualenv.pypa.io/en/latest/">Python virtual environment</a> is recommended to isolate project dependencies.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ python3 -m venv venv
+$ source venv/bin/activate  # On Windows: venv\Scripts\activate
+</pre></div>
+</div>
+</li>
+<li><p><strong>Install dependencies</strong>: From the repository root, install all required packages:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ pip install -r requirements.txt
+</pre></div>
+</div>
+</li>
+<li><p><strong>Navigate to a lab</strong>: Each lab is located in its own directory under <code class="docutils literal notranslate"><span class="pre">labs/</span></code>. Change into the lab directory you want to work with:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ cd labs/lab-&lt;number&gt;
+</pre></div>
+</div>
+</li>
+<li><p><strong>Run the application</strong>: Most labs contain a Flask application. To run a specific lab’s application:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ python app.py
+</pre></div>
+</div>
+<p>Some labs may have additional setup requirements (such as Docker for lab-10) or specific instructions documented in their respective directories.</p>
+</li>
+</ol>
+</section>
 <section id="code-of-conduct">
 <h2>Code of Conduct<a class="headerlink" href="#code-of-conduct" title="Link to this heading"></a></h2>
 <p>&lt;insert code of conduct here&gt;

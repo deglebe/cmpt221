@@ -47,9 +47,9 @@
 <li class="toctree-l1"><a class="reference internal" href="development.html">Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Troubleshooting</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#issue-1">Issue #1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#issue-2">Issue #2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#issue-3">Issue #3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#issue-1-conflicting-port-usage-with-docker">Issue #1: Conflicting Port Usage with Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#issue-2-psycopg2-installation-errors">Issue #2: psycopg2 Installation Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#issue-3-local-postgresql-vs-docker-for-database-setup">Issue #3: Local PostgreSQL vs Docker for Database Setup</a></li>
 </ul>
 </li>
 </ul>
@@ -81,20 +81,30 @@
   <section id="troubleshooting">
 <span id="id1"></span><h1>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h1>
 <p>This section describes some common issues that can arise and possible solutions.</p>
-<section id="issue-1">
-<h2>Issue #1<a class="headerlink" href="#issue-1" title="Link to this heading"></a></h2>
-<p>&lt;Decription&gt;
-&lt;Solution&gt;</p>
+<section id="issue-1-conflicting-port-usage-with-docker">
+<h2>Issue #1: Conflicting Port Usage with Docker<a class="headerlink" href="#issue-1-conflicting-port-usage-with-docker" title="Link to this heading"></a></h2>
+<p>When running Docker containers, you may encounter port conflicts if a port is already in use by another service or container. This commonly occurs when trying to start a PostgreSQL or Flask container on a port that’s already occupied.</p>
+<p><strong>Solution</strong>: Dynamically provide a port to Docker by specifying a different port mapping in your <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> file or when running the container. For example, instead of using the default PostgreSQL port 5432, you can map it to a different host port:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;5433:5432&quot;</span><span class="w">  </span><span class="c1"># Maps host port 5433 to container port 5432</span>
+</pre></div>
+</div>
+<p>This allows you to run multiple database instances or avoid conflicts with locally installed PostgreSQL services.</p>
 </section>
-<section id="issue-2">
-<h2>Issue #2<a class="headerlink" href="#issue-2" title="Link to this heading"></a></h2>
-<p>&lt;Description&gt;
-&lt;Solution&gt;</p>
+<section id="issue-2-psycopg2-installation-errors">
+<h2>Issue #2: psycopg2 Installation Errors<a class="headerlink" href="#issue-2-psycopg2-installation-errors" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">psycopg2-binary</span></code> package may fail to install when included in <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>, especially on certain operating systems or when dependencies are not properly configured. This can prevent database connectivity from working correctly.</p>
+<p><strong>Solution</strong>: Install <code class="docutils literal notranslate"><span class="pre">psycopg2-binary</span></code> separately outside of the requirements file before installing other dependencies:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ pip install psycopg2-binary
+$ pip install -r requirements.txt
+</pre></div>
+</div>
+<p>This ensures that the PostgreSQL adapter is properly installed with all its system-level dependencies before other packages attempt to use it.</p>
 </section>
-<section id="issue-3">
-<h2>Issue #3<a class="headerlink" href="#issue-3" title="Link to this heading"></a></h2>
-<p>&lt;Description&gt;
-&lt;Solution&gt;</p>
+<section id="issue-3-local-postgresql-vs-docker-for-database-setup">
+<h2>Issue #3: Local PostgreSQL vs Docker for Database Setup<a class="headerlink" href="#issue-3-local-postgresql-vs-docker-for-database-setup" title="Link to this heading"></a></h2>
+<p>Setting up and managing a local PostgreSQL installation can be time-consuming and may cause conflicts with system configurations, especially when working across different operating systems or when multiple projects require different database versions.</p>
+<p><strong>Solution</strong>: Using Docker to spin up databases is more convenient and portable. Docker containers provide isolated database instances that can be easily started, stopped, and removed without affecting your local system. With <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code>, you can define your database configuration once and share it across different environments. This approach eliminates the need for manual PostgreSQL installation, configuration, and maintenance, making it ideal for development workflows.</p>
 </section>
 </section>
 
